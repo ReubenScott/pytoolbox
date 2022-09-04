@@ -1,20 +1,25 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from enum import Enum, unique
 
+from enum import Enum, unique
 
 # https://docs.python.org/3/library/enum.html
 # https://icode.best/i/20040935950696
 # https://icode.best/i/37984843543219
-# @unique
+
+
+@unique
 class FieldType(Enum):
-  String = 'STRING', 'VARCHAR'
-  BigInteger = 'LONG'
-  Numeric = 'DECIMAL'
-  Date = 'DATE',
-  Time = 'TIME',
-  DateTime = 'TIMESTAMP'
-  Interval = 'INTERVAL'
+  STRING = 'character varying', 'varchar', 'char'
+  SMALLINT = 'smallint'
+  INTEGER = 'int'
+  LONG = 'LONG'
+  NUMERIC = 'decimal', 'numeric'
+  DATE = 'date',
+  TIME = 'time',
+  DATETIME = 'timestamp', 'timestamp without time zone', 'smalldatetime', 'datetime'
+  INTERVAL = 'interval'
+  JSON = 'jsonb'
   # SmallInteger = 7
   # Float = 9
   # Text = 3
@@ -30,11 +35,15 @@ class FieldType(Enum):
   
   @staticmethod
   def get_type(type_name):
+    file_type = None
     for name, item in FieldType.__members__.items():
-      print(f'name: {name}, member: {item}, value: {item.value}')
-      
-      if type_name in item.value:
-        return item
+      # print(f'name: {name}, member: {item}, value: {item.value}')
+      if type_name.lower() in item.value:
+        file_type = item
+        break
+    if not file_type:
+      print("get_type Error: " , type_name)
+    return file_type
       
   def get_length(self, color):
       if color == FieldType.RED:
@@ -81,3 +90,4 @@ if __name__ == '__main__':
 # 253: 'VAR_STRING',
 # 254: 'STRING',
 # 255: 'GEOMETRY'} 
+
