@@ -13,7 +13,7 @@ class FieldType(Enum):
   STRING = 'character varying', 'varchar', 'char'
   SMALLINT = 'smallint'
   INTEGER = 'int'
-  LONG = 'LONG'
+  LONG = 'long','bigint'
   NUMERIC = 'decimal', 'numeric'
   DATE = 'date',
   TIME = 'time',
