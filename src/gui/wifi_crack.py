@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from tkinter import *
-from tkinter import ttk  
-import pywifi
-from pywifi import const
 import time
+from tkinter import ttk, StringVar, LabelFrame, Button, Label, Entry, Tk  
+from tkinter.constants import W, NSEW, VERTICAL, NS
 import tkinter.filedialog
 import tkinter.messagebox
+
+from pywifi import const
+import pywifi
 
 
 class MY_GUI():
@@ -146,7 +147,7 @@ class MY_GUI():
 						# print("密码:"+self.pwdStr+"错误")
 						self.res = "---错误--- wifi名:%s匹配密码：%s" % (self.get_wifissid, self.pwdStr)
 						print(self.res)
-					
+					time.sleep(3)
 				except:
 					continue
 	
