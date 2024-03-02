@@ -5,3 +5,7 @@
 *.pyc
 src/dist
 src/build
+/.idea
+/venv
+/Market.wpr
+/Market.wpu
